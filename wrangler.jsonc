@@ -1,0 +1,39 @@
+{
+  "name": "ogp",
+  "compatibility_date": "2025-03-11",
+  "main": "./build/server/index.js",
+  "assets": {
+    "directory": "./build/client/"
+  },
+  "workers_dev": true,
+  "preview_urls": true,
+  "vars": {},
+  "kv_namespaces": [
+    {
+      "binding": "OGP_CACHE",
+      "id": "YOUR_KV_NAMESPACE_ID",
+      "preview_id": "YOUR_KV_PREVIEW_ID"
+    }
+  ],
+  "env": {
+    // ---------------------------
+    // Production 設定
+    // ---------------------------
+    "production": {
+      "compatibility_date": "2025-03-11",
+      "routes": [
+        {
+          "pattern": "ogp.nw-union.net",
+          "custom_domain": true
+        }
+      ],
+      "vars": {},
+      "kv_namespaces": [
+        {
+          "binding": "OGP_CACHE",
+          "id": "07cf6bba8d9547798a943d2806471664"
+        }
+      ]
+    }
+  }
+}
