@@ -55,7 +55,7 @@ export default function Show() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto pt-6">
       <h1 className="text-3xl mb-8">OGP 情報取得ツール</h1>
 
       <form onSubmit={handleSubmit} className="mb-8">
@@ -143,7 +143,7 @@ export default function Show() {
                     <img
                       src={result.og.image}
                       alt="OGP画像"
-                      className="max-w-md rounded-lg shadow-sm"
+                      className="max-w-md max-h-64 w-full h-auto object-contain rounded-lg shadow-sm"
                     />
                   </dd>
                 </div>
@@ -180,7 +180,7 @@ export default function Show() {
                       <img
                         src={result.twitter.image}
                         alt="Twitter Card画像"
-                        className="max-w-md rounded-lg shadow-sm"
+                        className="max-w-md max-h-64 w-full h-auto object-contain rounded-lg shadow-sm"
                       />
                     </dd>
                   </div>
