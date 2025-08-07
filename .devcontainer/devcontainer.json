@@ -14,8 +14,8 @@
       "extensions": ["oven.bun-vscode"]
     }
   },
-  "forwardPorts": [5173],
-  "appPort": ["5173:5173"],
+  "forwardPorts": [5173, 8787],
+  "appPort": ["5173:5173", "8787:8787"],
   "runArgs": ["--name", "nw-union-ogp"],
   "postCreateCommand": "bun install --frozen-lockfile"
 }
