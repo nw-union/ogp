@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
   "files": {
     "includes": [
       "**/*.js",
@@ -13,7 +13,8 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "nursery": {
+      "nursery": {},
+      "correctness": {
         "noNestedComponentDefinitions": "off" // コンポーネント内でローカルコンポーネントを定義する場合があるため
       }
     },
