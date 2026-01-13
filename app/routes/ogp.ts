@@ -5,6 +5,8 @@ interface ResponseJson {
   domain: string;
   url: string;
   icon: string;
+  author: string;
+  publishedTime: string;
   og: {
     title: string;
     siteName: string;
@@ -38,12 +40,14 @@ class TwitterParser {
   title: string;
   description: string;
   imageUrl: string;
+  author: string;
 
   constructor() {
     this.card = "";
     this.title = "";
     this.description = "";
     this.imageUrl = "";
+    this.author = "";
   }
 
   element(element: Element) {
@@ -60,6 +64,9 @@ class TwitterParser {
       case "twitter:image":
         this.imageUrl = element.getAttribute("content") ?? "";
         break;
+      case "author":
+        this.author = element.getAttribute("content") ?? "";
+        break;
       default:
         break;
     }
@@ -71,12 +78,14 @@ class OgpParser {
   siteName: string;
   description: string;
   imageUrl: string;
+  publishedTime: string;
 
   constructor() {
     this.title = "";
     this.description = "";
     this.imageUrl = "";
     this.siteName = "";
+    this.publishedTime = "";
   }
   element(element: Element) {
     switch (element.getAttribute("property")) {
@@ -91,6 +100,9 @@ class OgpParser {
         break;
       case "og:site_name":
         this.siteName = element.getAttribute("content") ?? "";
+        break;
+      case "article:published_time":
+        this.publishedTime = element.getAttribute("content") ?? "";
         break;
       default:
         break;
@@ -155,6 +167,8 @@ export const loader: LoaderFunction = async ({ request, context }) => {
     url: target.toString(),
     icon:
       iconParser.icon ?? `${target.protocol}//${target.hostname}/favicon.ico`,
+    author: twitterParser.author,
+    publishedTime: ogpParser.publishedTime,
     og: {
       title: ogpParser.title,
       siteName: ogpParser.siteName,
