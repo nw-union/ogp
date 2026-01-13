@@ -8,6 +8,8 @@ interface OgpResponse {
   domain: string;
   url: string;
   icon: string;
+  author: string;
+  publishedTime: string;
   og: {
     title: string;
     siteName: string;
@@ -112,6 +114,18 @@ export default function Show() {
                   <img src={result.icon} alt="favicon" className="w-6 h-6" />
                 </dd>
               </div>
+              {result.author && (
+                <div className="flex">
+                  <dt className="font-medium w-24">著者:</dt>
+                  <dd className="text-gray-700">{result.author}</dd>
+                </div>
+              )}
+              {result.publishedTime && (
+                <div className="flex">
+                  <dt className="font-medium w-24">公開日時:</dt>
+                  <dd className="text-gray-700">{result.publishedTime}</dd>
+                </div>
+              )}
             </dl>
           </div>
 
