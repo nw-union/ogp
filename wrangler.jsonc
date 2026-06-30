@@ -1,7 +1,7 @@
 {
   "name": "ogp",
   "compatibility_date": "2025-03-11",
-  "main": "./workers/app.ts",
+  "main": "./build/server/index.js",
   "assets": {
     "directory": "./build/client/"
   },

@@ -9,7 +9,10 @@ export default defineConfig({
     port: 5173,
   },
   plugins: [
-    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    cloudflare({
+      viteEnvironment: { name: "ssr" },
+      config: (cfg) => ({ ...cfg, main: "./workers/app.ts" }),
+    }),
     tailwindcss(),
     reactRouter(),
   ],
