@@ -1,4 +1,4 @@
-import type { AppLoadContext } from "react-router";
+import { RouterContextProvider, createContext } from "react-router";
 
 declare global {
   interface CloudflareEnvironment extends Env {
@@ -6,24 +6,21 @@ declare global {
   }
 }
 
-declare module "react-router" {
-  export interface AppLoadContext {
-    cloudflare: {
-      env: CloudflareEnvironment;
-      ctx: Omit<ExecutionContext, "props">;
-    };
-  }
-}
-
-type GetLoadContextArgs = {
-  request: Request;
-  context: Pick<AppLoadContext, "cloudflare">;
+type CloudflareContext = {
+  env: CloudflareEnvironment;
+  ctx: Omit<ExecutionContext, "props">;
 };
 
-export function getLoadContext({ context }: GetLoadContextArgs) {
-  const { cloudflare } = context;
+export const cloudflareContext = createContext<CloudflareContext>();
 
-  return {
-    cloudflare,
-  };
+export function getLoadContext({
+  env,
+  ctx,
+}: {
+  env: CloudflareEnvironment;
+  ctx: Omit<ExecutionContext, "props">;
+}): RouterContextProvider {
+  const provider = new RouterContextProvider();
+  provider.set(cloudflareContext, { env, ctx });
+  return provider;
 }
