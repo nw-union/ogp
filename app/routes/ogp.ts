@@ -1,4 +1,5 @@
 import type { LoaderFunction } from "react-router";
+import { cloudflareContext } from "../../load-context";
 
 // レスポンスの型
 interface ResponseJson {
@@ -111,7 +112,7 @@ class OgpParser {
 }
 
 export const loader: LoaderFunction = async ({ request, context }) => {
-  const env = context.cloudflare.env;
+  const env = context.get(cloudflareContext).env;
   const kv = env.OGP_CACHE;
 
   // url クエリがない場合は 400
