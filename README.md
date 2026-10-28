@@ -51,31 +51,6 @@ $ curl -s 'https://ogp.nw-union.net/api?url=https://nw-union.net'
 
 <br />
 
-## 🔰 Getting Started
-
-### Codespaces
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=nw-union/ogp)
-
-### ローカルサーバー起動方法
-
-0. 最新バージョンの [Bun](https://bun.com/) が動く環境であること
-1. 依存パッケージ取得
-
-```bash
-bun install --frozen-lockfile
-```
-
-2. 開発サーバー起動
-
-```
-bun run dev
-```
-
-🏃 http://localhost:5173
-
-<br/>
-
 ## 🏗️ Build
 
 ```
